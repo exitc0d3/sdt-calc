@@ -1,0 +1,6 @@
+[package]
+name = "sdt_calc"
+version = "0.1.0"
+authors = ["Finn Fallowfield <finnfallowfield@gmail.com>"]
+
+[dependencies]
