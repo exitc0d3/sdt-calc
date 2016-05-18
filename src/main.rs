@@ -1,17 +1,26 @@
 use std::io;
 
+
+// simple input function for functions
+
 fn get_param(s: &str) -> f64 {
     println!("{}", s);
     
-    let mut input = String::new();
+    loop {
+        println!("Enter a floating point number!");
+        let mut input = String::new();
     
-    io::stdin().read_line(&mut input)
-            .expect("failed to read line");
-            
-    let parsed_input: f64 = input.trim().parse().expect("enter a number");
-    return parsed_input;
+        io::stdin().read_line(&mut input)
+                .expect("failed to read line");
+    
+        let input: f64 = match input.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+        
+        return input;
+    }
 }
-
 
 fn calc_speed() -> f64 {
     let distance: f64   = get_param("Enter distance:");
@@ -41,7 +50,7 @@ fn calc_distance() -> f64 {
 fn main() {   
     let mut calc_input = String::new();
     
-    println!("Hello, would you like to calculate speed distance or time?");
+    println!("Hello, would you like to calculate speed, distance or time?");
     
     io::stdin().read_line(&mut calc_input)
             .expect("failed to read line");
@@ -65,4 +74,5 @@ fn main() {
             println!("Enter speed, distance or time!")
         }
     }
+    
 }
