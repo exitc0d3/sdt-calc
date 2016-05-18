@@ -1,12 +1,12 @@
 use std::io;
 
 
-// simple input function for functions
+// Simple input function to simplify calc functions
 
 fn get_param(s: &str) -> f64 {
-    println!("{}", s);
+    println!("{}", s); // Print input instructions
     
-    loop {
+    loop { // loop until a float is entered
         println!("Enter a floating point number!");
         let mut input = String::new();
     
