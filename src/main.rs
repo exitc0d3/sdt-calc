@@ -1,78 +1,54 @@
 use std::io;
 
+fn prompt_for_value(value_name: &str) -> f64 {
+    println!("Enter {}:", value_name);
 
-// Simple input function to simplify calc functions
-
-fn get_param(s: &str) -> f64 {
-    println!("{}", s); // Print input instructions
-    
-    loop { // loop until a float is entered
+    loop {
         println!("Enter a floating point number!");
+
         let mut input = String::new();
-    
-        io::stdin().read_line(&mut input)
-                .expect("failed to read line");
-    
-        let input: f64 = match input.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
-        
-        return input;
+        io::stdin().read_line(&mut input).expect("failed to read line");
+
+        if let Ok(num) = input.trim().parse() {
+            return num;
+        }
     }
 }
 
-fn calc_speed() -> f64 {
-    let distance: f64   = get_param("Enter distance:");
-    let time: f64       = get_param("Enter time:");
+fn calc_speed() {
+    let distance = prompt_for_value("distance");
+    let time     = prompt_for_value("time");
     println!("Speed = distance / time");
     println!("Speed = {} / {}", distance, time);
-        distance / time
+    println!("Speed = {}", distance / time);
 }
 
-fn calc_time() -> f64 {
-    let speed: f64      = get_param("Enter speed:");
-    let distance: f64   = get_param("Enter distance:");
+fn calc_time() {
+    let speed    = prompt_for_value("speed");
+    let distance = prompt_for_value("distance");
     println!("Time = distance / speed");
     println!("Time = {} / {}", distance, speed);
-        distance / speed
+    println!("Time = {}", distance / speed);
 }
 
-fn calc_distance() -> f64 {
-    let speed: f64      = get_param("Enter speed:");
-    let time: f64       = get_param("Enter time:");
+fn calc_distance() {
+    let speed = prompt_for_value("speed");
+    let time  = prompt_for_value("time");
     println!("Distance = speed * time");
     println!("Distance = {} * {}", speed, time);
-        speed * time
+    println!("Distance = {}", speed * time);
 }
 
-
-fn main() {   
-    let mut calc_input = String::new();
-    
+fn main() {
     println!("Hello, would you like to calculate speed, distance or time?");
-    
-    io::stdin().read_line(&mut calc_input)
-            .expect("failed to read line");
-    
-    let answer: f64;
-    
-    match calc_input.trim() {
-        "speed" | "Speed"       => {
-            answer = calc_speed();
-            println!("Speed = {}", answer);
-        }
-        "distance" | "Distance" => {
-            answer = calc_distance();
-            println!("Distance = {}", answer);
-        }
-        "time" | "Time"         => {
-            answer = calc_time();
-            println!("Time = {}", answer);
-        }
-        _                       => {
-            println!("Enter speed, distance or time!")
-        }
+
+    let mut calc_input = String::new();
+    io::stdin().read_line(&mut calc_input).expect("failed to read line");
+
+    match calc_input.to_lowercase().trim() {
+        "speed"    => calc_speed(),
+        "distance" => calc_distance(),
+        "time"     => calc_time(),
+        _          => println!("Enter speed, distance or time!"),
     }
-    
 }
