@@ -1,7 +1,12 @@
+/* Calculate speed distance and time with the other two variables in the equation */
+/* Written by Finn Fallowfield: Digital Native                                    */
+
+//mod input.rs
 use std::io;
+mod my_input;
 
 /* This function will simplify input later on and reduce repetition */
-fn prompt_for_value(value_name: &str) -> f64 {
+/*fn prompt_for_value(value_name: &str) -> f64 {
     println!("Enter {}:", value_name);
 
     loop { // Loop until user enters a float and loop is broken
@@ -14,27 +19,30 @@ fn prompt_for_value(value_name: &str) -> f64 {
             return num;
         }
     }
-}
+}*/
 
 fn calc_speed() {
-    let distance = prompt_for_value("distance");
-    let time     = prompt_for_value("time");
+    //calculate speed
+    let distance = my_input::prompt_for_value("distance");
+    let time     = my_input::prompt_for_value("time");
     println!("Speed = distance / time"); // Working
     println!("Speed = {} / {}", distance, time);
     println!("Speed = {}", distance / time);
 }
 
 fn calc_time() {
-    let speed    = prompt_for_value("speed");
-    let distance = prompt_for_value("distance");
+    //calculate time
+    let speed    = my_input::prompt_for_value("speed");
+    let distance = my_input::prompt_for_value("distance");
     println!("Time = distance / speed"); // Working
     println!("Time = {} / {}", distance, speed);
     println!("Time = {}", distance / speed);
 }
 
 fn calc_distance() {
-    let speed = prompt_for_value("speed");
-    let time  = prompt_for_value("time");
+    //calculate distance
+    let speed = my_input::prompt_for_value("speed");
+    let time  = my_input::prompt_for_value("time");
     println!("Distance = speed * time"); // Working
     println!("Distance = {} * {}", speed, time);
     println!("Distance = {}", speed * time);
