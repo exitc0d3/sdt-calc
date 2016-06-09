@@ -1,25 +1,8 @@
 /* Calculate speed distance and time with the other two variables in the equation */
 /* Written by Finn Fallowfield: Digital Native                                    */
 
-//mod input.rs
 use std::io;
 mod my_input;
-
-/* This function will simplify input later on and reduce repetition */
-/*fn prompt_for_value(value_name: &str) -> f64 {
-    println!("Enter {}:", value_name);
-
-    loop { // Loop until user enters a float and loop is broken
-        println!("Enter a floating point number!");
-
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).expect("failed to read line");
-
-        if let Ok(num) = input.trim().parse() {
-            return num;
-        }
-    }
-}*/
 
 fn calc_speed() {
     //calculate speed
